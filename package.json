@@ -1,0 +1,17 @@
+{
+  "name": "mocha-filter",
+  "version": "1.0.0",
+  "description": "Util for adding custom filters to Mocha",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "keywords": [
+    "mocha",
+    "filter",
+    "test",
+    "testing"
+  ],
+  "author": "Nathan Boxhall-Burnett",
+  "license": "ISC"
+}
