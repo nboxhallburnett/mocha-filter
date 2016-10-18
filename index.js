@@ -97,4 +97,16 @@ module.exports.addFilter = function (name, filter) {
 	module.exports.setupMocha((obj = {}, obj[name] = filter, obj), true);
 };
 
+/**
+ * Add mutliple filters at once
+ *
+ * @param filters    Object containing the filters to add
+ */
+module.exports.addFilters = function (filters) {
+	var keys = Object.keys(filters);
+	for (var i = 0; i < keys.length - 1; i++) {
+		module.exports.addFilter(keys[i], filters[keys[i]]);
+	}
+}
+
 module.exports.setupMocha();

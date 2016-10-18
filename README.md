@@ -7,7 +7,7 @@ By default (when you ```require('mocha-filter')```) an ```ignore``` filter is ad
 ## Examples
 The filters can be used to restrict test runs to only be used when in specific environments:
 
-```
+```javascript
 var filter = require('mocha-filter');
 
 filter.addFilter('preprod', () => {
@@ -22,7 +22,7 @@ describe.preprod('A test set which should only run in pre-production', () => {
 
 So long as the supplied function for the filter returns a boolean value, you can make it execute whatever you would like, without having to wrap tests in conditionals
 
-```
+```javascript
 filter.addFilter('dataSupplied', () => {
 	if (!_config.sample_data) {
 		console.error('Error: data not supplied. Skipping test.');
@@ -33,6 +33,32 @@ filter.addFilter('dataSupplied', () => {
 
 describe('Example tests', () => {
 	it.dataSupplied('Test to only run when sample data is supplied', done => {
+		//...
+		done();
+	});
+})
+```
+
+You can also add multiple filters at once by passing an object containing all the required funtions, with the key being the name of the filter:
+```javascript
+var filters = {
+	example: () => {
+		return true;
+	},
+	otherExample: () => {
+		return false;
+	}
+}
+
+filter.addFilters(filters);
+
+describe('Using multiple filters', () => {
+	it.example('Example test', done => {
+		//...
+		done();
+	})
+
+	it.otherExample('Other Example test', done => {
 		//...
 		done();
 	});
