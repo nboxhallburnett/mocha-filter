@@ -41,6 +41,8 @@ describe('Example tests', () => {
 
 You can also add multiple filters at once by passing an object containing all the required funtions, with the key being the name of the filter:
 ```javascript
+var filter = require('mocha-filter');
+
 var filters = {
 	example: () => {
 		return true;
@@ -51,6 +53,32 @@ var filters = {
 }
 
 filter.addFilters(filters);
+
+describe('Using multiple filters', () => {
+	it.example('Example test', done => {
+		//...
+		done();
+	})
+
+	it.otherExample('Other Example test', done => {
+		//...
+		done();
+	});
+})
+```
+
+Alternatively, you can pass in a default set of filters when requiring the package:
+```javascript
+var filters = {
+	example: () => {
+		return true;
+	},
+	otherExample: () => {
+		return false;
+	}
+}
+
+var filter = require('mocha-filter')(filters);
 
 describe('Using multiple filters', () => {
 	it.example('Example test', done => {

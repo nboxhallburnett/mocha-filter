@@ -9,14 +9,20 @@
 
 // Predefined additional filters
 var checks = {
-		/**
-		 * Only run the tests when not in prod
-		 */
 		ignore: function () {
 			return false;
 		}
-	},
-	originalChecks = Object.keys(checks);
+	}, originalChecks = Object.keys(checks);
+
+module.exports = function (defaults) {
+	if (typeof defaults !== 'undefined' && typeof defaults !== 'object') {
+		throw new Error('Error: default filters should be an object');
+	}
+	// Add the ignore filter to the provided defaults object if it isn't already defined in it
+	!defaults.ignore && (defaults.ignore = checks.ignore);
+	checks = defaults;
+	module.exports.setupMocha();
+}
 
 /**
  * Adding filters to mocha tests does not persist across test
@@ -108,5 +114,3 @@ module.exports.addFilters = function (filters) {
 		module.exports.addFilter(keys[i], filters[keys[i]]);
 	}
 }
-
-module.exports.setupMocha();
