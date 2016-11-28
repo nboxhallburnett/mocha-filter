@@ -110,7 +110,7 @@ module.exports.addFilter = function (name, filter) {
  */
 module.exports.addFilters = function (filters) {
 	var keys = Object.keys(filters);
-	for (var i = 0; i < keys.length - 1; i++) {
+	for (var i = 0; i < keys.length; i++) {
 		module.exports.addFilter(keys[i], filters[keys[i]]);
 	}
 }
