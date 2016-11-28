@@ -1,6 +1,6 @@
 {
   "name": "mocha-filter",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Util for adding custom filters to Mocha",
   "main": "index.js",
   "scripts": {
