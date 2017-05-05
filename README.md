@@ -20,7 +20,7 @@ describe.preprod('A test set which should only run in pre-production', () => {
 
 ```
 
-So long as the supplied function for the filter returns a boolean value, you can make it execute whatever you would like, without having to wrap tests in conditionals
+So long as the supplied function for the filter returns `true`, `false`, or `'skip'`, you can make it execute whatever you would like, without having to wrap tests in conditionals
 
 ```javascript
 filter.addFilter('dataSupplied', () => {

@@ -12,7 +12,8 @@ var checks = {
 		ignore: function () {
 			return false;
 		}
-	}, originalChecks = Object.keys(checks);
+	},
+	originalChecks = Object.keys(checks);
 
 module.exports = function (defaults) {
 	if (typeof defaults !== 'undefined' && typeof defaults !== 'object') {
@@ -57,7 +58,9 @@ module.exports.setupMocha = function (_checks, skipOriginals) {
 			returnFunction[_key] = function () {
 				var passed = _checks[_key]();
 				if (arguments.length > 0) {
-					if (passed && notFailed) {
+					if (passed === 'skip' && notFailed) {
+						func.skip.apply(null, arguments);
+					} else if (passed && notFailed) {
 						func.apply(null, arguments);
 					}
 				} else {
