@@ -36,7 +36,7 @@ describe('Example tests', () => {
 		//...
 		done();
 	});
-})
+});
 ```
 
 You can also add multiple filters at once by passing an object containing all the required funtions, with the key being the name of the filter:
@@ -58,13 +58,13 @@ describe('Using multiple filters', () => {
 	it.example('Example test', done => {
 		//...
 		done();
-	})
+	});
 
 	it.otherExample('Other Example test', done => {
 		//...
 		done();
 	});
-})
+});
 ```
 
 Alternatively, you can pass in a default set of filters when requiring the package:
@@ -84,11 +84,11 @@ describe('Using multiple filters', () => {
 	it.example('Example test', done => {
 		//...
 		done();
-	})
+	});
 
 	it.otherExample('Other Example test', done => {
 		//...
 		done();
 	});
-})
+});
 ```
